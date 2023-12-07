@@ -4,12 +4,15 @@ import data.BaseData;
 import helpers.DriverFactory;
 import helpers.ParametersProvider;
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import page_checkers.MainPageChecker;
+import page_checkers.NotePageChecker;
 import pages.MainPage;
 
 import java.io.IOException;
@@ -76,6 +79,7 @@ public abstract class BaseTest implements BaseData {
     /**
      * Метод установки приложения
      */
+    @Step("Установка приложения")
     protected final void installApp() {
         String fileSeparator = FileSystems.getDefault().getSeparator();
         driver.installApp(
@@ -88,6 +92,7 @@ public abstract class BaseTest implements BaseData {
     /**
      * Метод запуска установленного приложения
      */
+    @Step("Запуск приложения")
     protected final void openApp() {
         driver.activateApp(ParametersProvider.getPropertyByName("bundleId"));
     }
@@ -96,7 +101,16 @@ public abstract class BaseTest implements BaseData {
      * Метод открытия главного экрана приложения
      * @return
      */
+    @Step("Открытие главного экрана приложения")
     protected MainPage openMainNotesPage() {
         return new MainPage(driver);
+    }
+
+    public MainPage createNote(String title, String text){
+        return openMainNotesPage()
+                .addNoteButtonClick()
+                .fillInputTitleField(title)
+                .fillInputDescriptionField(text)
+                .saveNoteButtonSuccessfulClick();
     }
 }

@@ -10,29 +10,26 @@ import page_checkers.BasePageChecker;
 import java.util.function.Consumer;
 
 /**
- * Базовый класс эрана приложения
+ * Базовый класс эрана приложения.
  */
 @Getter
-public abstract class BasePage <PAGE extends BasePage, CHECKER extends BasePageChecker> implements BaseData {
-    /**
-     * Android драйвер
-     */
-    protected AndroidDriver driver;
-
-    /**
-     * Разрешение экрана
-     */
-    private Dimension window;
+public abstract class BasePage<PAGE extends BasePage, CHECKER extends BasePageChecker> implements BaseData {
 
     /**
      * Время ожидания открытия экрана
      */
     protected final static int pageTimeout =
             Integer.valueOf(ParametersProvider.getPropertyByName("explicitTimeout")) * 1000;
-
-    private CHECKER checker;
-
     protected final String byTextLocator = "//*[@text='%s']";
+    /**
+     * Android драйвер
+     */
+    protected AndroidDriver driver;
+    /**
+     * Разрешение экрана
+     */
+    private Dimension window;
+    private CHECKER checker;
 
     /**
      * Конструктор класса.

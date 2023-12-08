@@ -1,6 +1,8 @@
 package helpers;
 
 import io.appium.java_client.android.AndroidDriver;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.IOException;
@@ -9,9 +11,8 @@ import java.net.URL;
 /**
  * Фабрика для создания драйвера
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DriverFactory {
-
-    private DriverFactory() {}
 
     /**
      * Метод создания драйвера

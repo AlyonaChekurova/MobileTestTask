@@ -4,6 +4,7 @@ import data.BaseData;
 import helpers.DriverFactory;
 import helpers.ParametersProvider;
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -25,7 +26,7 @@ public abstract class BaseTest implements BaseData {
     /**
      * Android драйвер
      */
-    private  AndroidDriver driver;
+    private AndroidDriver driver;
 
     /**
      * Метод подготовки драйвера для тестов
@@ -76,6 +77,7 @@ public abstract class BaseTest implements BaseData {
     /**
      * Метод установки приложения
      */
+    @Step("Установка приложения")
     protected final void installApp() {
         String fileSeparator = FileSystems.getDefault().getSeparator();
         driver.installApp(
@@ -88,14 +90,17 @@ public abstract class BaseTest implements BaseData {
     /**
      * Метод запуска установленного приложения
      */
+    @Step("Запуск приложения")
     protected final void openApp() {
         driver.activateApp(ParametersProvider.getPropertyByName("bundleId"));
     }
 
     /**
      * Метод открытия главного экрана приложения
+     *
      * @return
      */
+    @Step("Открытие главного экрана приложения")
     protected MainPage openMainNotesPage() {
         return new MainPage(driver);
     }

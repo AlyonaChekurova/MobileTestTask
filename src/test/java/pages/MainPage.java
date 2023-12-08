@@ -84,7 +84,7 @@ public class MainPage extends BasePage<MainPage, MainPageChecker> implements Mai
     }
 
     @Step("Нажатие на кнопку создания заметки")
-    public NotePage addNoteButtonClick() {
+    public NotePage clickAddNoteButton() {
         driver.findElement(addNoteButton).click();
         return new NotePage(getDriver());
     }
@@ -96,7 +96,7 @@ public class MainPage extends BasePage<MainPage, MainPageChecker> implements Mai
     }
 
     @Step("Нажатие на кнопку очистки поля поиска")
-    public MainPage clearSearchFieldButtonClick() {
+    public MainPage clickClearSearchFieldButton() {
         driver.findElement(clearSearchFieldButton).click();
         return this;
     }

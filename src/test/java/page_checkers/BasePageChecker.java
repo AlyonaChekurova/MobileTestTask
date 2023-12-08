@@ -1,7 +1,7 @@
 package page_checkers;
 
 import data.BaseData;
-import helpers.TestUtils;
+import helpers.Waiters;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.apache.commons.validator.GenericValidator;
@@ -75,10 +75,10 @@ public abstract class BasePageChecker<PAGE extends BasePage> implements BaseData
      * @param locator         локатор списка элементов
      * @param size            ожидаемый размер списка элементов
      */
-    protected final void checkElementsSize(final String elementListName,
-                                           final By locator,
-                                           final int size) {
-        TestUtils.waitUntilVisible(driver, locator);
+    protected final void checkListSize(final String elementListName,
+                                       final By locator,
+                                       final int size) {
+        Waiters.waitUntilVisible(driver, locator);
         assertEquals(driver.findElements(locator).size(), size,
                 format(ELEMENT_LIST_SIZE_ERROR, elementListName));
     }
@@ -91,7 +91,7 @@ public abstract class BasePageChecker<PAGE extends BasePage> implements BaseData
      */
     protected final void checkElementNotPresent(final String elementName,
                                                 final By locator) {
-        TestUtils.waitUntilVisible(driver, locator);
+        Waiters.waitUntilInvisible(driver, locator);
         assertTrue(driver.findElements(locator).isEmpty(),
                 format(ELEMENT_PRESENT_ERROR, elementName) +
                         format(AFTER_WAITING_TIME_SUFFIX, PROGRESS_BAR_TIMEOUT));
@@ -133,9 +133,9 @@ public abstract class BasePageChecker<PAGE extends BasePage> implements BaseData
      * @param locator             элемент
      * @param expectedDatePattern ожидаемый формат даты
      */
-    protected final void checkDate(final String elementName,
-                                   final By locator,
-                                   final String expectedDatePattern) {
+    protected final void checkDateFormat(final String elementName,
+                                         final By locator,
+                                         final String expectedDatePattern) {
         checkElementPresent(elementName, locator);
         assertTrue(GenericValidator.isDate(driver.findElement(locator).getText(),
                 expectedDatePattern, true), format(INCORRECT_DATE_FORMAT, elementName));

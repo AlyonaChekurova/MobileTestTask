@@ -17,7 +17,7 @@ public class NotePageChecker extends BasePageChecker<NotePage> implements NotePa
     public void checkNotePageElements() {
         checkElementPresent("Кнопка-стрелка для возврата на главный экран",
                 page.getReturnButton());
-        checkDate("Дата", page.getDate(), "dd-MM-yyyy");
+        checkDateFormat("Дата", page.getDate(), "dd-MM-yyyy");
         checkElementPresent("Кнопка-галочка сохранения заметки",
                 page.getSaveNoteButton());
         checkElementText("Плейсхолдер в поле ввода названия заметки",

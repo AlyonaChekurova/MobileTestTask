@@ -8,10 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Утилитный класс.
+ * Класс с методами ожиданий.
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TestUtils {
+public class Waiters {
 
     /**
      * Ожидание видимости элемента.
@@ -23,5 +23,17 @@ public class TestUtils {
                                         final By locator) {
         new WebDriverWait(webDriver, Integer.parseInt(ParametersProvider.getPropertyByName("elementTimeout")))
                 .until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    /**
+     * Ожидание невидимости элемента.
+     *
+     * @param webDriver драйвер
+     * @param locator   Web element
+     */
+    public static void waitUntilInvisible(final WebDriver webDriver,
+                                          final By locator) {
+        new WebDriverWait(webDriver, Integer.parseInt(ParametersProvider.getPropertyByName("elementTimeout")))
+                .until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 }

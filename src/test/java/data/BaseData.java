@@ -1,5 +1,7 @@
 package data;
 
+import static helpers.Generator.getRandomStringGenerator;
+
 /**
  * Интерфейс с общими значениями
  */
@@ -15,7 +17,7 @@ public interface BaseData {
     String AFTER_WAITING_TIME_SUFFIX = " после ожидания %s с";
     String TEXTS_NOT_EQUAL_ERROR = "В элементе - '%s' некорректный текст.\n" + "Фактическое значение '%s'. Ожидаемое - '%s'";
     String INCORRECT_DATE_FORMAT = "Неправильный формат даты в элементе %s";
-    String SOME_STRING = "abc!@#123";
+    String SOME_STRING = getRandomStringGenerator().generate(12);
     String ELEMENT_LIST_CONTAINS_TEXT_ERROR = "%s содержит элемент %s без ввденного текста";
     String ELEMENT_LIST_SIZE_ERROR = "Размер %s не совпадает с ожидаемым";
 }

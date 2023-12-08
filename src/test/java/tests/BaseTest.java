@@ -11,8 +11,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-import page_checkers.MainPageChecker;
-import page_checkers.NotePageChecker;
 import pages.MainPage;
 
 import java.io.IOException;
@@ -28,7 +26,7 @@ public abstract class BaseTest implements BaseData {
     /**
      * Android драйвер
      */
-    private  AndroidDriver driver;
+    private AndroidDriver driver;
 
     /**
      * Метод подготовки драйвера для тестов
@@ -99,18 +97,11 @@ public abstract class BaseTest implements BaseData {
 
     /**
      * Метод открытия главного экрана приложения
+     *
      * @return
      */
     @Step("Открытие главного экрана приложения")
     protected MainPage openMainNotesPage() {
         return new MainPage(driver);
-    }
-
-    public MainPage createNote(String title, String text){
-        return openMainNotesPage()
-                .addNoteButtonClick()
-                .fillInputTitleField(title)
-                .fillInputDescriptionField(text)
-                .saveNoteButtonSuccessfulClick();
     }
 }

@@ -62,19 +62,19 @@ public class NotePage extends BasePage<NotePage, NotePageChecker> implements Not
     }
 
     @Step("Нажатие на кнопку сохранения заметки")
-    public NotePage saveNoteButtonClick() {
+    public NotePage clickSaveNoteButton() {
         driver.findElement(saveNoteButton).click();
         return this;
     }
 
     @Step("Нажатие на кнопку сохранения заметки")
-    public MainPage saveNoteButtonSuccessfulClick() {
+    public MainPage clickSaveNoteButtonSuccessful() {
         driver.findElement(saveNoteButton).click();
         return new MainPage(driver);
     }
 
     @Step("Нажатие на кнопку \"OK\" для подтверждения сообщения об ошибке")
-    public NotePage snackbarOkButtonClick() {
+    public NotePage clickSnackbarOkButton() {
         driver.findElement(snackbarOkButton).click();
         return this;
     }
